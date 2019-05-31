@@ -110,6 +110,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Tu
+
+# Build rule for target.
+Tu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 Tu
+.PHONY : Tu
+
+# fast build rule for target.
+Tu/fast:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/build
+.PHONY : Tu/fast
+
+#=============================================================================
 # Target rules for targets named ErChaShu_JiBenCaoZuo
 
 # Build rule for target.
@@ -200,6 +213,19 @@ DuiLie_JiBenCaoZuo/fast:
 	$(MAKE) -f CMakeFiles\DuiLie_JiBenCaoZuo.dir\build.make CMakeFiles/DuiLie_JiBenCaoZuo.dir/build
 .PHONY : DuiLie_JiBenCaoZuo/fast
 
+#=============================================================================
+# Target rules for targets named Huffman
+
+# Build rule for target.
+Huffman: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 Huffman
+.PHONY : Huffman
+
+# fast build rule for target.
+Huffman/fast:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/build
+.PHONY : Huffman/fast
+
 DuiLie_JiBenCaoZuo.obj: DuiLie_JiBenCaoZuo.c.obj
 
 .PHONY : DuiLie_JiBenCaoZuo.obj
@@ -253,6 +279,33 @@ ErChaShu_JiBenCaoZuo.s: ErChaShu_JiBenCaoZuo.c.s
 ErChaShu_JiBenCaoZuo.c.s:
 	$(MAKE) -f CMakeFiles\ErChaShu_JiBenCaoZuo.dir\build.make CMakeFiles/ErChaShu_JiBenCaoZuo.dir/ErChaShu_JiBenCaoZuo.c.s
 .PHONY : ErChaShu_JiBenCaoZuo.c.s
+
+Huffman.obj: Huffman.c.obj
+
+.PHONY : Huffman.obj
+
+# target to build an object file
+Huffman.c.obj:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/Huffman.c.obj
+.PHONY : Huffman.c.obj
+
+Huffman.i: Huffman.c.i
+
+.PHONY : Huffman.i
+
+# target to preprocess a source file
+Huffman.c.i:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/Huffman.c.i
+.PHONY : Huffman.c.i
+
+Huffman.s: Huffman.c.s
+
+.PHONY : Huffman.s
+
+# target to generate assembly for a file
+Huffman.c.s:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/Huffman.c.s
+.PHONY : Huffman.c.s
 
 PanDuanHuiWen_Inn.obj: PanDuanHuiWen_Inn.c.obj
 
@@ -335,6 +388,33 @@ SinglyLinkedList.c.s:
 	$(MAKE) -f CMakeFiles\SinglyLinkedList.dir\build.make CMakeFiles/SinglyLinkedList.dir/SinglyLinkedList.c.s
 .PHONY : SinglyLinkedList.c.s
 
+Tu.obj: Tu.c.obj
+
+.PHONY : Tu.obj
+
+# target to build an object file
+Tu.c.obj:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/Tu.c.obj
+.PHONY : Tu.c.obj
+
+Tu.i: Tu.c.i
+
+.PHONY : Tu.i
+
+# target to preprocess a source file
+Tu.c.i:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/Tu.c.i
+.PHONY : Tu.c.i
+
+Tu.s: Tu.c.s
+
+.PHONY : Tu.s
+
+# target to generate assembly for a file
+Tu.c.s:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/Tu.c.s
+.PHONY : Tu.c.s
+
 YueSeFuHuan.obj: YueSeFuHuan.c.obj
 
 .PHONY : YueSeFuHuan.obj
@@ -395,21 +475,26 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
+	@echo ... Tu
 	@echo ... ErChaShu_JiBenCaoZuo
 	@echo ... RankedList
-	@echo ... edit_cache
 	@echo ... Zhan_JiBenCaoZuo
 	@echo ... SinglyLinkedList
 	@echo ... YueSeFuHuan
 	@echo ... PanDuanHuiWen_Inn
-	@echo ... rebuild_cache
 	@echo ... DuiLie_JiBenCaoZuo
+	@echo ... Huffman
+	@echo ... edit_cache
+	@echo ... rebuild_cache
 	@echo ... DuiLie_JiBenCaoZuo.obj
 	@echo ... DuiLie_JiBenCaoZuo.i
 	@echo ... DuiLie_JiBenCaoZuo.s
 	@echo ... ErChaShu_JiBenCaoZuo.obj
 	@echo ... ErChaShu_JiBenCaoZuo.i
 	@echo ... ErChaShu_JiBenCaoZuo.s
+	@echo ... Huffman.obj
+	@echo ... Huffman.i
+	@echo ... Huffman.s
 	@echo ... PanDuanHuiWen_Inn.obj
 	@echo ... PanDuanHuiWen_Inn.i
 	@echo ... PanDuanHuiWen_Inn.s
@@ -419,6 +504,9 @@ help:
 	@echo ... SinglyLinkedList.obj
 	@echo ... SinglyLinkedList.i
 	@echo ... SinglyLinkedList.s
+	@echo ... Tu.obj
+	@echo ... Tu.i
+	@echo ... Tu.s
 	@echo ... YueSeFuHuan.obj
 	@echo ... YueSeFuHuan.i
 	@echo ... YueSeFuHuan.s

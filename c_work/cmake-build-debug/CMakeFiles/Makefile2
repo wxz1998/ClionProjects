@@ -64,6 +64,43 @@ CMAKE_SOURCE_DIR = C:\Users\wxz18\CLionProjects\c_work
 CMAKE_BINARY_DIR = C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug
 
 #=============================================================================
+# Target rules for target CMakeFiles/Tu.dir
+
+# All Build rule for target.
+CMakeFiles/Tu.dir/all:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/depend
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target Tu"
+.PHONY : CMakeFiles/Tu.dir/all
+
+# Include target in all.
+all: CMakeFiles/Tu.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Tu.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Tu.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/Tu.dir/rule
+
+# Convenience name for target.
+Tu: CMakeFiles/Tu.dir/rule
+
+.PHONY : Tu
+
+# clean rule for target.
+CMakeFiles/Tu.dir/clean:
+	$(MAKE) -f CMakeFiles\Tu.dir\build.make CMakeFiles/Tu.dir/clean
+.PHONY : CMakeFiles/Tu.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Tu.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ErChaShu_JiBenCaoZuo.dir
 
 # All Build rule for target.
@@ -107,7 +144,7 @@ clean: CMakeFiles/ErChaShu_JiBenCaoZuo.dir/clean
 CMakeFiles/RankedList.dir/all:
 	$(MAKE) -f CMakeFiles\RankedList.dir\build.make CMakeFiles/RankedList.dir/depend
 	$(MAKE) -f CMakeFiles\RankedList.dir\build.make CMakeFiles/RankedList.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target RankedList"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target RankedList"
 .PHONY : CMakeFiles/RankedList.dir/all
 
 # Include target in all.
@@ -144,7 +181,7 @@ clean: CMakeFiles/RankedList.dir/clean
 CMakeFiles/Zhan_JiBenCaoZuo.dir/all:
 	$(MAKE) -f CMakeFiles\Zhan_JiBenCaoZuo.dir\build.make CMakeFiles/Zhan_JiBenCaoZuo.dir/depend
 	$(MAKE) -f CMakeFiles\Zhan_JiBenCaoZuo.dir\build.make CMakeFiles/Zhan_JiBenCaoZuo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target Zhan_JiBenCaoZuo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target Zhan_JiBenCaoZuo"
 .PHONY : CMakeFiles/Zhan_JiBenCaoZuo.dir/all
 
 # Include target in all.
@@ -181,7 +218,7 @@ clean: CMakeFiles/Zhan_JiBenCaoZuo.dir/clean
 CMakeFiles/SinglyLinkedList.dir/all:
 	$(MAKE) -f CMakeFiles\SinglyLinkedList.dir\build.make CMakeFiles/SinglyLinkedList.dir/depend
 	$(MAKE) -f CMakeFiles\SinglyLinkedList.dir\build.make CMakeFiles/SinglyLinkedList.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target SinglyLinkedList"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target SinglyLinkedList"
 .PHONY : CMakeFiles/SinglyLinkedList.dir/all
 
 # Include target in all.
@@ -218,7 +255,7 @@ clean: CMakeFiles/SinglyLinkedList.dir/clean
 CMakeFiles/YueSeFuHuan.dir/all:
 	$(MAKE) -f CMakeFiles\YueSeFuHuan.dir\build.make CMakeFiles/YueSeFuHuan.dir/depend
 	$(MAKE) -f CMakeFiles\YueSeFuHuan.dir\build.make CMakeFiles/YueSeFuHuan.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target YueSeFuHuan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target YueSeFuHuan"
 .PHONY : CMakeFiles/YueSeFuHuan.dir/all
 
 # Include target in all.
@@ -255,7 +292,7 @@ clean: CMakeFiles/YueSeFuHuan.dir/clean
 CMakeFiles/PanDuanHuiWen_Inn.dir/all:
 	$(MAKE) -f CMakeFiles\PanDuanHuiWen_Inn.dir\build.make CMakeFiles/PanDuanHuiWen_Inn.dir/depend
 	$(MAKE) -f CMakeFiles\PanDuanHuiWen_Inn.dir\build.make CMakeFiles/PanDuanHuiWen_Inn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target PanDuanHuiWen_Inn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target PanDuanHuiWen_Inn"
 .PHONY : CMakeFiles/PanDuanHuiWen_Inn.dir/all
 
 # Include target in all.
@@ -319,6 +356,43 @@ CMakeFiles/DuiLie_JiBenCaoZuo.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/DuiLie_JiBenCaoZuo.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Huffman.dir
+
+# All Build rule for target.
+CMakeFiles/Huffman.dir/all:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/depend
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target Huffman"
+.PHONY : CMakeFiles/Huffman.dir/all
+
+# Include target in all.
+all: CMakeFiles/Huffman.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Huffman.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Huffman.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wxz18\CLionProjects\c_work\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/Huffman.dir/rule
+
+# Convenience name for target.
+Huffman: CMakeFiles/Huffman.dir/rule
+
+.PHONY : Huffman
+
+# clean rule for target.
+CMakeFiles/Huffman.dir/clean:
+	$(MAKE) -f CMakeFiles\Huffman.dir\build.make CMakeFiles/Huffman.dir/clean
+.PHONY : CMakeFiles/Huffman.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Huffman.dir/clean
 
 .PHONY : clean
 
