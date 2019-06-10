@@ -6,35 +6,35 @@
 #include <stdlib.h>
 
 #define max 20
-//è¾¹è¡¨èŠ‚ç‚¹
+//±ß±í½Úµã
 typedef struct node {
     int adjvex;
     struct node *next;
 } eNode;
-//å¤´èŠ‚ç‚¹
+//Í·½Úµã
 typedef struct headnode {
     char vertex;
     eNode *firstedge;
 } hNode;
-//é‚»æ¥è¡¨
+//ÁÚ½Ó±í
 typedef struct {
     hNode adjlist[max];
-    int n, e;   //é¡¶ç‚¹æ•°ï¼Œè¾¹æ•°
+    int n, e;   //¶¥µãÊı£¬±ßÊı
 } linkG;
 
-//åˆ›å»ºï¼ˆé‚»æ¥è¡¨ï¼‰
-linkG *creat(linkG *g, int c) //cä¸º0è¡¨ç¤ºæ— å‘å›¾
+//´´½¨£¨ÁÚ½Ó±í£©
+linkG *creat(linkG *g, int c) //cÎª0±íÊ¾ÎŞÏòÍ¼
 {
     int i, j, k;
     eNode *s;
     int n1, e1;
     char ch;
     g = (linkG *) malloc(sizeof(linkG));
-    printf("è¯·è¾“å…¥é¡¶ç‚¹æ•°åŠè¾¹æ•°: ");
-    scanf("%d%d", &n1, &e1);
+    printf("ÇëÊäÈë¶¥µãÊı¼°±ßÊı: ");
+    scanf("%d %d", &n1, &e1);
     g->n = n1;
     g->e = e1;
-    printf("è¯·è¾“å…¥é¡¶ç‚¹ä¿¡æ¯ï¼š");
+    printf("ÇëÊäÈë¶¥µãĞÅÏ¢£º");
     getchar();
     for (i = 0; i < n1; i++) {
         scanf("%c", &ch);
@@ -44,8 +44,8 @@ linkG *creat(linkG *g, int c) //cä¸º0è¡¨ç¤ºæ— å‘å›¾
     getchar();
     int i1, j1;
     for (k = 0; k < e1; k++) {
-        printf("è¯·è¾“å…¥å¯¹ï¼ˆi,jï¼‰: ");
-        scanf("%d%d", &i1, &j1);
+        printf("ÇëÊäÈë¶Ô£¨i,j£©: ");
+        scanf("%d %d", &i1, &j1);
         s = (eNode *) malloc(sizeof(eNode));
         s->adjvex = j1;
         s->next = g->adjlist[i1].firstedge;
@@ -60,10 +60,10 @@ linkG *creat(linkG *g, int c) //cä¸º0è¡¨ç¤ºæ— å‘å›¾
     return g;
 }
 
-int visited[max]; //æ ‡è®°æ˜¯å¦è®¿é—®
+int visited[max]; //±ê¼ÇÊÇ·ñ·ÃÎÊ
 
-//æ·±åº¦ä¼˜å…ˆéå†DFS
-void dfs(linkG *g, int i) //é¡¶ç‚¹i
+//Éî¶ÈÓÅÏÈ±éÀúDFS
+void dfs(linkG *g, int i) //¶¥µãi
 {
     eNode *p;
     printf("%c ", g->adjlist[i].vertex);
@@ -86,7 +86,7 @@ void dfstravel(linkG *g) {
             dfs(g, i);
 }
 
-//å¹¿åº¦ä¼˜å…ˆéå†BFS
+//¹ã¶ÈÓÅÏÈ±éÀúBFS
 void bfs(linkG *g, int i) {
     int j;
     eNode *p;
@@ -118,14 +118,14 @@ void bfstravel(linkG *g) {
             bfs(g, i);
 }
 
-//ä¸»å‡½æ•°
+//Ö÷º¯Êı
 int main() {
     linkG *g;
     g = creat(g, 0);
-    printf("DFSï¼š");
+    printf("DFS£º");
     dfstravel(g);
     printf("\n");
-    printf("BFSï¼š");
+    printf("BFS£º");
     bfstravel(g);
     printf("\n");
 
