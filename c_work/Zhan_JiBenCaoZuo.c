@@ -6,56 +6,56 @@
 #include <stdlib.h>
 
 typedef struct {
-    int *top;//æ ˆé¡¶
-    int *base;//æ ˆåº•
-    int stackSize;//æœ€å¤§ç©ºé—´
+    int *top;//Õ»¶¥
+    int *base;//Õ»µ×
+    int stackSize;//×î´ó¿Õ¼ä
 } sqs;
 
-void Init(sqs *s)//åˆå§‹åŒ–æ ˆ
+void Init(sqs *s)//³õÊ¼»¯Õ»
 {
     s->base = (int *) malloc(100 * sizeof(int));
-    s->top = s->base;//åˆå§‹æ ˆé¡¶å’Œæ ˆåº•é‡åˆ
-    s->stackSize = 100;//æ ˆçš„æœ€å¤§å®¹é‡
+    s->top = s->base;//³õÊ¼Õ»¶¥ºÍÕ»µ×ÖØºÏ
+    s->stackSize = 100;//Õ»µÄ×î´óÈÝÁ¿
 }
 
-void RuZhan(sqs *s, int e)//å…¥æ ˆ
+void RuZhan(sqs *s, int e)//ÈëÕ»
 {
     if (s->top - s->base >= s->stackSize) {
-        s->base = (int *) realloc(s->base, (s->stackSize + 10) * sizeof(int));//é‡æ–°ç”³è¯·ä¸€æ®µé•¿åº¦ä¸ºs->stack+10çš„ç©ºé—´ï¼Œå¹¶å°†åŽŸæ¥çš„æ•°æ®å¤åˆ¶è¿‡åŽ»
-        s->top = s->base + s->stackSize;//è®¾ç½®æ ˆé¡¶
-        s->stackSize = s->stackSize + 10;//è®¾ç½®æ ˆçš„æœ€å¤§å®¹é‡
+        s->base = (int *) realloc(s->base, (s->stackSize + 10) * sizeof(int));//ÖØÐÂÉêÇëÒ»¶Î³¤¶ÈÎªs->stack+10µÄ¿Õ¼ä£¬²¢½«Ô­À´µÄÊý¾Ý¸´ÖÆ¹ýÈ¥
+        s->top = s->base + s->stackSize;//ÉèÖÃÕ»¶¥
+        s->stackSize = s->stackSize + 10;//ÉèÖÃÕ»µÄ×î´óÈÝÁ¿
     }
     *(s->top) = e;
     s->top++;
 }
 
-//å‡ºæ ˆ
+//³öÕ»
 void ChuZhan(sqs *s) {
-    if (s->top == s->base)//æ ˆä¸ºç©ºæ ˆ
+    if (s->top == s->base)//Õ»Îª¿ÕÕ»
         return;
     while (s->top - 1 != s->base)
         printf("%d ", *--(s->top));
     printf("%d\n", *(--s->top));
 }
 
-//æ¸…ç©ºæ ˆ(é‡æ–°èµ‹å€¼æ—¶ä¼šç›´æŽ¥è¦†ç›–åŽŸæ¥çš„å…ƒç´ )
+//Çå¿ÕÕ»(ÖØÐÂ¸³ÖµÊ±»áÖ±½Ó¸²¸ÇÔ­À´µÄÔªËØ)
 void QingKongZhan(sqs *s) {
     s->top = s->base;
 }
 
-//é”€æ¯æ ˆ
+//Ïú»ÙÕ»
 void XiaoHuiZhan(sqs *s) {
     int i, len;
-    len = s->stackSize;//len=æ ˆçš„é•¿åº¦
+    len = s->stackSize;//len=Õ»µÄ³¤¶È
     for (i = 0; i < len; i++) {
-        free(s->base);//é‡Šæ”¾æ ˆåº•
-        s->base++;//æ ˆåº•æƒ³æ ˆé¡¶æ–¹å‘ç§»åŠ¨
+        free(s->base);//ÊÍ·ÅÕ»µ×
+        s->base++;//Õ»µ×ÏëÕ»¶¥·½ÏòÒÆ¶¯
     }
     s->base = s->top = NULL;
     s->stackSize = 0;
 }
 
-//æ±‚æ ˆçš„å½“å‰å®¹é‡(ä¸æ˜¯æœ€å¤§å®¹é‡,æœ€å¤§å®¹é‡æ˜¯s->stack)
+//ÇóÕ»µÄµ±Ç°ÈÝÁ¿(²»ÊÇ×î´óÈÝÁ¿,×î´óÈÝÁ¿ÊÇs->stack)
 void RongLiang(sqs *s) {
-    printf("å½“å‰æ ˆçš„å®¹é‡ä¸º%d\n", s->top - s->base);
+    printf("µ±Ç°Õ»µÄÈÝÁ¿Îª%d\n", s->top - s->base);
 }

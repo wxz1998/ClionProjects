@@ -9,64 +9,64 @@
 #define  MaxVertices 100
 typedef int VertexType;
 
-/***********è¾¹è¡¨**********/
+/***********±ß±í**********/
 typedef struct EdgeNode {
-    int adjvex;      //è¯¥è¾¹æ‰€æŒ‡å‘ç»“ç‚¹çš„ä½ç½®
-    struct EdgeNode *next;   //è¯¥è¾¹æ‰€æŒ‡å‘ä¸‹ä¸€ä¸ªç»“ç‚¹çš„æŒ‡é’ˆ
+    int adjvex;      //¸Ã±ßËùÖ¸Ïò½áµãµÄÎ»ÖÃ
+    struct EdgeNode *next;   //¸Ã±ßËùÖ¸ÏòÏÂÒ»¸ö½áµãµÄÖ¸Õë
 } EdgeNode;
 
-/*********é¡¶ç‚¹è¡¨*********/
+/*********¶¥µã±í*********/
 typedef struct {
-    int vertex;     //é¡¶ç‚¹çš„ä¿¡æ¯
-    EdgeNode *edgenext;  //æŒ‡å‘ç¬¬ä¸€æ¡è¾¹çš„æŒ‡é’ˆ
+    int vertex;     //¶¥µãµÄĞÅÏ¢
+    EdgeNode *edgenext;  //Ö¸ÏòµÚÒ»Ìõ±ßµÄÖ¸Õë
 } VertexNode, AdjList[MaxVertices];
 
-/*********å›¾ç»“æ„********/
+/*********Í¼½á¹¹********/
 typedef struct {
     AdjList adjlist;
-    int nodeNum;  //é¡¶ç‚¹æ•°
-    int edgeNum;  //è¾¹æ•°
+    int nodeNum;  //¶¥µãÊı
+    int edgeNum;  //±ßÊı
 } ALGraph;
 
-/*********åˆ›å»ºå›¾********/
+/*********´´½¨Í¼********/
 void create_Graph(ALGraph *G) {
     int i, j;
-    int vi, vj;     //ç›¸è¿æ¥çš„ä¸¤ä¸ªé¡¶ç‚¹åºå·
-    EdgeNode *s;    //è¾¹è¡¨ç»“ç‚¹
+    int vi, vj;     //ÏàÁ¬½ÓµÄÁ½¸ö¶¥µãĞòºÅ
+    EdgeNode *s;    //±ß±í½áµã
 
-    printf("è¯·è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°(ä»¥ç©ºæ ¼éš”å¼€)");
+    printf("ÇëÊäÈë¶¥µãÊıºÍ±ßÊı(ÒÔ¿Õ¸ñ¸ô¿ª)");
     scanf("%d%d", &G->nodeNum, &G->edgeNum);
 
-    printf("å»ºç«‹é¡¶ç‚¹è¡¨:\n");
+    printf("½¨Á¢¶¥µã±í:\n");
     for (i = 0; i < G->nodeNum; i++) {
         //getchar();
-        printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„ä¿¡æ¯:", i + 1);
+        printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄĞÅÏ¢:", i + 1);
         scanf("%d", &G->adjlist[i].vertex);
         G->adjlist[i].edgenext = NULL;
     }
 
-    printf("\næ‰“å°é¡¶ç‚¹ä¸‹æ ‡åŠé¡¶ç‚¹æ•°æ®:\n");
+    printf("\n´òÓ¡¶¥µãÏÂ±ê¼°¶¥µãÊı¾İ:\n");
     for (i = 0; i < G->nodeNum; i++)
-        printf("é¡¶ç‚¹ä¸‹æ ‡ï¼š%d  é¡¶ç‚¹æ•°æ®:%d\n ", i, G->adjlist[i]);
+        printf("¶¥µãÏÂ±ê£º%d  ¶¥µãÊı¾İ:%d\n ", i, G->adjlist[i]);
 
-    printf("\nå»ºç«‹è¾¹è¡¨:\n");
+    printf("\n½¨Á¢±ß±í:\n");
     for (i = 0; i < G->edgeNum; i++) {
-        printf("è¯·è¾“å…¥ç›¸è¿æ¥çš„ä¸¤ä¸ªé¡¶ç‚¹ä¸‹æ ‡:");
+        printf("ÇëÊäÈëÏàÁ¬½ÓµÄÁ½¸ö¶¥µãÏÂ±ê:");
         scanf("%d%d", &vi, &vj);
         s = malloc(sizeof(EdgeNode));
-        s->adjvex = vj;    //è¾¹æ‰€æŒ‡å‘ç»“ç‚¹çš„ä½ç½®
+        s->adjvex = vj;    //±ßËùÖ¸Ïò½áµãµÄÎ»ÖÃ
         s->next = G->adjlist[vi].edgenext;
         G->adjlist[vi].edgenext = s;
 
-        //è¾“å…¥(0 1)åœ¨1ä¸­ä¹ŸæŠŠ0ç¼–å…¥
+        //ÊäÈë(0 1)ÔÚ1ÖĞÒ²°Ñ0±àÈë
         s = malloc(sizeof(EdgeNode));
-        s->adjvex = vi;    //è¾¹æ‰€æŒ‡å‘ç»“ç‚¹çš„ä½ç½®
+        s->adjvex = vi;    //±ßËùÖ¸Ïò½áµãµÄÎ»ÖÃ
         s->next = G->adjlist[vj].edgenext;
         G->adjlist[vj].edgenext = s;
     }
 }
 
-/***********æ‰“å°è¾¹è¡¨*********/
+/***********´òÓ¡±ß±í*********/
 void print_Graph(ALGraph *G) {
     int i, j;
     for (i = 0; i < G->nodeNum; i++) {
@@ -84,7 +84,7 @@ void print_Graph(ALGraph *G) {
     }
 }
 
-/**************æ·±åº¦ä¼˜å…ˆéå†**************/
+/**************Éî¶ÈÓÅÏÈ±éÀú**************/
 int visit[maxSize];
 
 void DFS(ALGraph G, int v) {
@@ -92,9 +92,9 @@ void DFS(ALGraph G, int v) {
     if (v < 0 || v >= G.nodeNum)
         return;
     else {
-        visit[v] = 1;     //å·²ç»è®¿é—®æ ‡è®°
+        visit[v] = 1;     //ÒÑ¾­·ÃÎÊ±ê¼Ç
         printf("%d ", G.adjlist[v].vertex);
-        p = G.adjlist[v].edgenext;   //pæŒ‡å‘é¡¶ç‚¹vçš„ç¬¬ä¸€æ¡è¾¹
+        p = G.adjlist[v].edgenext;   //pÖ¸Ïò¶¥µãvµÄµÚÒ»Ìõ±ß
         while (p != NULL) {
             if (visit[p->adjvex] != 1)
                 DFS(G, p->adjvex);
@@ -105,7 +105,7 @@ void DFS(ALGraph G, int v) {
 
 void DFSTravel(ALGraph G) {
     int v;
-    printf("æ·±åº¦ä¼˜å…ˆéå†é¡ºåºä¸ºï¼š");
+    printf("Éî¶ÈÓÅÏÈ±éÀúË³ĞòÎª£º");
     for (v = 0; v < G.nodeNum; v++)
         visit[v] = 0;
     for (v = 0; v < G.nodeNum; v++) {
@@ -114,27 +114,27 @@ void DFSTravel(ALGraph G) {
     }
 }
 
-/***************å¹¿åº¦ä¼˜å…ˆéå†*************/
+/***************¹ã¶ÈÓÅÏÈ±éÀú*************/
 int visitBFS[maxSize];
 
 void BFS(ALGraph G, int v) {
     EdgeNode *p;
-    int que[maxSize], front = 0, rear = 0;   //é˜Ÿåˆ—å®šä¹‰çš„ç®€å•å†™æ³•
+    int que[maxSize], front = 0, rear = 0;   //¶ÓÁĞ¶¨ÒåµÄ¼òµ¥Ğ´·¨
     int j;
     printf("%d ", G.adjlist[v].vertex);
     visitBFS[v] = 1;
-    rear = (rear + 1) % maxSize;     //å½“å‰é¡¶ç‚¹vè¿›å…¥é˜Ÿåˆ—
+    rear = (rear + 1) % maxSize;     //µ±Ç°¶¥µãv½øÈë¶ÓÁĞ
     que[rear] = v;
-    while (front != rear)     //é˜Ÿç©ºæ—¶éå†å®Œæˆ
+    while (front != rear)     //¶Ó¿ÕÊ±±éÀúÍê³É
     {
-        front = (front + 1) % maxSize;     //é¡¶ç‚¹å‡ºé˜Ÿ
+        front = (front + 1) % maxSize;     //¶¥µã³ö¶Ó
         j = que[front];
-        p = G.adjlist[j].edgenext;    //pæŒ‡å‘å‡ºé˜Ÿé¡¶ç‚¹jçš„ç¬¬ä¸€æ¡è¾¹
+        p = G.adjlist[j].edgenext;    //pÖ¸Ïò³ö¶Ó¶¥µãjµÄµÚÒ»Ìõ±ß
         while (p != NULL) {
             if (visitBFS[p->adjvex] == 0) {
                 printf("%d", p->adjvex);
                 visitBFS[p->adjvex] = 1;
-                rear = (rear + 1) % maxSize;   //è¯¥é¡¶ç‚¹è¿›é˜Ÿ
+                rear = (rear + 1) % maxSize;   //¸Ã¶¥µã½ø¶Ó
                 que[rear] = p->adjvex;
             }
             p = p->next;
@@ -144,7 +144,7 @@ void BFS(ALGraph G, int v) {
 
 void BFSTravel(ALGraph G) {
     int i;
-    printf("\nå¹¿åº¦ä¼˜å…ˆéå†é¡ºåºä¸ºï¼š");
+    printf("\n¹ã¶ÈÓÅÏÈ±éÀúË³ĞòÎª£º");
     for (i = 0; i < G.nodeNum; i++) {
         if (visitBFS[i] == 0)
             BFS(G, i);

@@ -6,70 +6,70 @@
 #include <stdio.h>
 #include <string.h>
 
-/*å®šä¹‰ä¸€ä¸ªå­¦ç”Ÿç±»å‹*/
+/*¶¨ÒåÒ»¸öÑ§ÉúÀàĞÍ*/
 typedef struct student {
-    char stuid[16];//å­¦å·
-    char name[16];//å­¦ç”Ÿå§“å
-    int num;//å­¦ç”Ÿå­¦å·
-    struct student *next;//ä¸‹ä¸€ä¸ªå­¦ç”Ÿçš„æŒ‡é’ˆ
+    char stuid[16];//Ñ§ºÅ
+    char name[16];//Ñ§ÉúĞÕÃû
+    int num;//Ñ§ÉúÑ§ºÅ
+    struct student *next;//ÏÂÒ»¸öÑ§ÉúµÄÖ¸Õë
 } Stu;
 
-Stu *students;//å­¦ç”Ÿé“¾è¡¨
-char *stuInfo = "test.txt";//å­¦ç”Ÿä¿¡æ¯å­˜å‚¨çš„æ–‡ä»¶
-int input = 0;//é€‰æ‹©
+Stu *students;//Ñ§ÉúÁ´±í
+char *stuInfo = "test.txt";//Ñ§ÉúĞÅÏ¢´æ´¢µÄÎÄ¼ş
+int input = 0;//Ñ¡Ôñ
 char tempInput[64];
 char tempName[64];
 char tempStuid[64];
 int tempNum = 0;
 
-void initFromTxt(void);//åˆå§‹åŒ–
-void deleteInfo(char *stuid);//åˆ é™¤ä¿¡æ¯
-void reWrite(void);//é‡å†™
-void insert2txt(Stu *stu);//æ’å…¥æ–‡æœ¬
-int addinfo(char *stuid, char *name, int num);//å¢åŠ ä¿¡æ¯
-void modify(char *stuid, char *name, int num);//ä¿®æ”¹ä¿¡æ¯
-int checkAdd(char *stuid);//åˆ¤æ–­å­¦å·è¾“å…¥
-void showInfo(void);//å±•ç¤ºä¿¡æ¯
-Stu *findInfo(char *stuid);//æŸ¥æ‰¾ä¿¡æ¯
-void view(void);//ç•Œé¢
-int checkInput(char *input, int begin, int end);//åˆ¤æ–­è¾“å…¥æ˜¯å¦å†ç»™å®šçš„èŒƒå›´å†…
+void initFromTxt(void);//³õÊ¼»¯
+void deleteInfo(char *stuid);//É¾³ıĞÅÏ¢
+void reWrite(void);//ÖØĞ´
+void insert2txt(Stu *stu);//²åÈëÎÄ±¾
+int addinfo(char *stuid, char *name, int num);//Ôö¼ÓĞÅÏ¢
+void modify(char *stuid, char *name, int num);//ĞŞ¸ÄĞÅÏ¢
+int checkAdd(char *stuid);//ÅĞ¶ÏÑ§ºÅÊäÈë
+void showInfo(void);//Õ¹Ê¾ĞÅÏ¢
+Stu *findInfo(char *stuid);//²éÕÒĞÅÏ¢
+void view(void);//½çÃæ
+int checkInput(char *input, int begin, int end);//ÅĞ¶ÏÊäÈëÊÇ·ñÔÙ¸ø¶¨µÄ·¶Î§ÄÚ
 
 void initFromTxt(void) {
-    students = (Stu *) malloc(sizeof(Stu));//ç»™é“¾è¡¨çš„å¤´èŠ‚ç‚¹åˆ†é…å†…å­˜
-    students->next = NULL;//æŒ‡å‘è®¾ä¸ºç©º
+    students = (Stu *) malloc(sizeof(Stu));//¸øÁ´±íµÄÍ·½Úµã·ÖÅäÄÚ´æ
+    students->next = NULL;//Ö¸ÏòÉèÎª¿Õ
     FILE *file;
-    file = fopen(stuInfo, "r");//æ‰“å¼€ä¿¡æ¯æ–‡ä»¶
+    file = fopen(stuInfo, "r");//´ò¿ªĞÅÏ¢ÎÄ¼ş
     if (file == NULL) {
-        printf("[initFromTxt]æ‰“å¼€æ–‡ä»¶å¤±è´¥!");
+        printf("[initFromTxt]´ò¿ªÎÄ¼şÊ§°Ü!");
         return;
     }
-    Stu *s = students;//å½“å‰ç»“ç‚¹
+    Stu *s = students;//µ±Ç°½áµã
     while (1) {
         Stu *stu = (Stu *) malloc(sizeof(Stu));
-        //ä»æ–‡æœ¬è¯»å…¥å­¦ç”Ÿä¿¡æ¯ï¼Œå­˜è¿›stuä¸­
+        //´ÓÎÄ±¾¶ÁÈëÑ§ÉúĞÅÏ¢£¬´æ½østuÖĞ
         if (fscanf(file, "%s %s %d", &(stu->stuid), &(stu->name), &(stu->num)) == EOF) {
-            //å¦‚æœè¯»å…¥ä¸ºEOFï¼Œä¹Ÿå°±è¯´ä¸ºè¯»å…¥ä¸ºç©ºï¼Œé‚£ä¹ˆåˆšåˆšæ–°å»ºçš„stuå°±ä¸è¦äº†ï¼Œé‡Šæ”¾åˆ†é…çš„å†…å­˜
+            //Èç¹û¶ÁÈëÎªEOF£¬Ò²¾ÍËµÎª¶ÁÈëÎª¿Õ£¬ÄÇÃ´¸Õ¸ÕĞÂ½¨µÄstu¾Í²»ÒªÁË£¬ÊÍ·Å·ÖÅäµÄÄÚ´æ
             free(stu);
             break;
         }
         stu->next = NULL;
 
-        s->next = stu;//å°†å½“å‰èŠ‚ç‚¹å’Œæ–°å»ºçš„èŠ‚ç‚¹é“¾æ¥èµ·æ¥
-        s = stu;//è°ƒæ•´å½“å‰èŠ‚ç‚¹ä¸ºæ–°èŠ‚ç‚¹
+        s->next = stu;//½«µ±Ç°½ÚµãºÍĞÂ½¨µÄ½ÚµãÁ´½ÓÆğÀ´
+        s = stu;//µ÷Õûµ±Ç°½ÚµãÎªĞÂ½Úµã
     }
     fclose(file);
 }
 
 void deleteInfo(char *stuid) {
-    Stu *stu = students->next;//å½“å‰èŠ‚ç‚¹
-    Stu *pre = students;//å½“å‰èŠ‚ç‚¹çš„çˆ¶èŠ‚ç‚¹
-    int isFound = 0;//æ˜¯å¦æ‰¾åˆ°å­¦ç”Ÿ
+    Stu *stu = students->next;//µ±Ç°½Úµã
+    Stu *pre = students;//µ±Ç°½ÚµãµÄ¸¸½Úµã
+    int isFound = 0;//ÊÇ·ñÕÒµ½Ñ§Éú
     while (stu != NULL) {
-        if (strcmp(stu->stuid, stuid) == 0)//åˆ¤æ–­idæ˜¯å¦ç›¸åŒ
+        if (strcmp(stu->stuid, stuid) == 0)//ÅĞ¶ÏidÊÇ·ñÏàÍ¬
         {
             pre->next = stu->next;
             free(stu);
-            reWrite();//é‡å†™è¿›æ–‡ä»¶
+            reWrite();//ÖØĞ´½øÎÄ¼ş
             isFound = 1;
             break;
         }
@@ -77,17 +77,17 @@ void deleteInfo(char *stuid) {
         stu = stu->next;
     }
     if (isFound) {
-        printf("åˆ é™¤æˆåŠŸ!\n");
+        printf("É¾³ı³É¹¦!\n");
     } else {
-        printf("æ²¡æœ‰æ‰¾åˆ°è¯¥è®°å½•!\n");
+        printf("Ã»ÓĞÕÒµ½¸Ã¼ÇÂ¼!\n");
     }
 }
 
 void reWrite(void) {
     Stu *stu = students->next;
-    FILE *file = fopen(stuInfo, "w");//æ¸…ç©ºæ–‡ä»¶
+    FILE *file = fopen(stuInfo, "w");//Çå¿ÕÎÄ¼ş
     fclose(file);
-    if (stu == NULL)//è¿™ä¸ªä»£è¡¨å½“å‰æ²¡æœ‰å­¦ç”Ÿï¼Œç›´æ¥è¿”å›
+    if (stu == NULL)//Õâ¸ö´ú±íµ±Ç°Ã»ÓĞÑ§Éú£¬Ö±½Ó·µ»Ø
     {
         return;
     }
@@ -99,12 +99,12 @@ void reWrite(void) {
 
 }
 
-//æ’å…¥ä¸€æ¡å­¦ç”Ÿä¿¡æ¯è¿›å…¥æ–‡æœ¬æ–‡ä»¶
+//²åÈëÒ»ÌõÑ§ÉúĞÅÏ¢½øÈëÎÄ±¾ÎÄ¼ş
 void insert2txt(Stu *stu) {
     FILE *file;
     file = fopen(stuInfo, "a");
     if (file == NULL) {
-        printf("[insert2txt]æ–‡ä»¶å†™å…¥ä¸æˆåŠŸ!");
+        printf("[insert2txt]ÎÄ¼şĞ´Èë²»³É¹¦!");
         return;
     }
     fprintf(file, "%s %s %d\n", stu->stuid, stu->name, stu->num);
@@ -113,38 +113,38 @@ void insert2txt(Stu *stu) {
 
 int addinfo(char *stuid, char *name, int num) {
     if (!checkAdd(stuid)) {
-        printf("å­¦å·é‡å¤ï¼Œä¸èƒ½æ·»åŠ !\n");
+        printf("Ñ§ºÅÖØ¸´£¬²»ÄÜÌí¼Ó!\n");
         return 0;
     }
-    Stu *newinfo = (Stu *) malloc(sizeof(Stu));//æ–°å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+    Stu *newinfo = (Stu *) malloc(sizeof(Stu));//ĞÂ½¨Ò»¸öĞÂ½Úµã
     newinfo->next = NULL;
-    //ç»™æ–°èŠ‚ç‚¹èµ‹å€¼
+    //¸øĞÂ½Úµã¸³Öµ
     strcpy(newinfo->stuid, stuid);
     strcpy(newinfo->name, name);
     newinfo->num = num;
-    //è°ƒæ•´påˆ°æœ€åä¸€ä¸ªèŠ‚ç‚¹
+    //µ÷Õûpµ½×îºóÒ»¸ö½Úµã
     Stu *p = students;
     while (p->next != NULL) {
         p = p->next;
     }
-    //pé“¾æ¥æ–°èŠ‚ç‚¹
+    //pÁ´½ÓĞÂ½Úµã
     p->next = newinfo;
-    //æ’å…¥æ–°ä¿¡æ¯
+    //²åÈëĞÂĞÅÏ¢
     insert2txt(newinfo);
     return 1;
 }
 
-/*ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯*/
+/*ĞŞ¸ÄÑ§ÉúĞÅÏ¢*/
 void modify(char *stuid, char *name, int num) {
-    //ä¿®æ”¹ä¿¡æ¯æ˜¯å…ˆåˆ é™¤å†æ·»åŠ 
+    //ĞŞ¸ÄĞÅÏ¢ÊÇÏÈÉ¾³ıÔÙÌí¼Ó
     deleteInfo(stuid);
     if (addinfo(stuid, name, num))
-        printf("ä¿®æ”¹æˆåŠŸ!");
+        printf("ĞŞ¸Ä³É¹¦!");
     else
-        printf("ä¿®æ”¹å¤±è´¥!");
+        printf("ĞŞ¸ÄÊ§°Ü!");
 }
 
-/*åˆ¤æ–­å­¦å·æ˜¯å¦é‡å¤*/
+/*ÅĞ¶ÏÑ§ºÅÊÇ·ñÖØ¸´*/
 int checkAdd(char *stuid) {
     Stu *stu = students->next;
     while (stu != NULL) {
@@ -155,7 +155,7 @@ int checkAdd(char *stuid) {
     return 1;
 }
 
-/*æ‰“å°æ‰€æœ‰ä¿¡æ¯*/
+/*´òÓ¡ËùÓĞĞÅÏ¢*/
 void showInfo(void) {
     Stu *stu = students->next;
     while (stu != NULL) {
@@ -166,7 +166,7 @@ void showInfo(void) {
     getchar();
 }
 
-/*æ ¹æ®å­¦ç”Ÿä¿¡æ¯æŸ¥æ‰¾å­¦ç”Ÿ*/
+/*¸ù¾İÑ§ÉúĞÅÏ¢²éÕÒÑ§Éú*/
 Stu *findInfo(char *stuid) {
     Stu *stu = students->next;
     while (stu != NULL) {
@@ -182,13 +182,13 @@ void main(void) {
     view();
 }
 
-/*åˆ¤æ–­è¾“å…¥æ˜¯å¦å†èŒƒå›´å†…ï¼Œç”¨æ¥åˆ¤æ–­*/
+/*ÅĞ¶ÏÊäÈëÊÇ·ñÔÙ·¶Î§ÄÚ£¬ÓÃÀ´ÅĞ¶Ï*/
 int checkInput(char *input, int begin, int end) {
-    //å¦‚æœä¸æ˜¯ä¸€ä¸ªå­—ç¬¦ï¼Œç›´æ¥è¿”å›
+    //Èç¹û²»ÊÇÒ»¸ö×Ö·û£¬Ö±½Ó·µ»Ø
     if (strlen(input) != 1) {
         return -1;
     }
-    //åˆ¤æ–­è¾“å…¥æ˜¯ä¸åœ¨èŒƒå›´å†…
+    //ÅĞ¶ÏÊäÈëÊÇ²»ÔÚ·¶Î§ÄÚ
     if (input[0] < '0' + begin || input[0] > '0' + end) {
         return -1;
     }
@@ -200,37 +200,37 @@ void view(void) {
     while (1) {
         system("cls");
         printf("****************************\n");
-        printf("1.å¢åŠ å­¦ç”Ÿä¿¡æ¯\n");
-        printf("2.åˆ é™¤å­¦ç”Ÿä¿¡æ¯\n");
-        printf("3.æ”¹å˜å­¦ç”Ÿä¿¡æ¯\n");
-        printf("4.æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯\n");
-        printf("5.å±•ç¤ºå­¦ç”Ÿä¿¡æ¯\n");
-        printf("6.é€€å‡º\n");
+        printf("1.Ôö¼ÓÑ§ÉúĞÅÏ¢\n");
+        printf("2.É¾³ıÑ§ÉúĞÅÏ¢\n");
+        printf("3.¸Ä±äÑ§ÉúĞÅÏ¢\n");
+        printf("4.²éÑ¯Ñ§ÉúĞÅÏ¢\n");
+        printf("5.Õ¹Ê¾Ñ§ÉúĞÅÏ¢\n");
+        printf("6.ÍË³ö\n");
         printf("****************************\n");
         scanf("%s", tempInput);
         input = checkInput(tempInput, 1, 6);
         switch (input) {
             case 1:
-                printf("è¯·è¾“å…¥å­¦å·,å§“å,æ•°å­—(ä¾‹å¦‚:20151111 å¼ ä¸‰ 0)æ•°æ®ä»¥ç©ºæ ¼éš”å¼€:");
+                printf("ÇëÊäÈëÑ§ºÅ,ĞÕÃû,Êı×Ö(ÀıÈç:20151111 ÕÅÈı 0)Êı¾İÒÔ¿Õ¸ñ¸ô¿ª:");
                 scanf("%s%s%d", tempStuid, tempName, &tempNum);
                 addinfo(tempStuid, tempName, tempNum);
                 break;
             case 2:
-                printf("è¯·è¾“å…¥å­¦å·:");
+                printf("ÇëÊäÈëÑ§ºÅ:");
                 scanf("%s", tempStuid);
                 deleteInfo(tempStuid);
                 break;
             case 3:
-                printf("è¯·è¾“å…¥å­¦å·:");
+                printf("ÇëÊäÈëÑ§ºÅ:");
                 break;
             case 4:
-                printf("è¯·è¾“å…¥å­¦å·:");
+                printf("ÇëÊäÈëÑ§ºÅ:");
                 scanf("%s", tempStuid);
                 Stu *stu = findInfo(tempStuid);
                 if (stu != NULL) {
-                    printf("å­¦å·:%s\nå§“å:%s\næ•°å­—:%d\n", stu->stuid, stu->name, stu->num);
+                    printf("Ñ§ºÅ:%s\nĞÕÃû:%s\nÊı×Ö:%d\n", stu->stuid, stu->name, stu->num);
                 } else {
-                    printf("å­¦å·ä¸å­˜åœ¨!æŒ‰ä»»æ„é”®è¿”å›");
+                    printf("Ñ§ºÅ²»´æÔÚ!°´ÈÎÒâ¼ü·µ»Ø");
                     getchar();
                     getchar();
                 }
@@ -242,7 +242,7 @@ void view(void) {
                 return;
                 break;
             default:
-                printf("è¾“å…¥é”™è¯¯!æŒ‰ä»»æ„é”®è¿”å›\n");
+                printf("ÊäÈë´íÎó!°´ÈÎÒâ¼ü·µ»Ø\n");
                 getchar();
                 getchar();
                 break;
